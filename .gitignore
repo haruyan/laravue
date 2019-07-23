@@ -4,6 +4,6 @@
 /vendor
 .phpunit.result.cache
 Homestead.json
-Homestead.yaaml
+Homestead.yaml
 npm-debug.log
 yarn-error.log
