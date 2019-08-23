@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
 use App\User;
 use Illuminate\Http\Request;
@@ -16,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        // return User::latest()->paginate(10);
+        return User::latest()->paginate(10);
     }
 
     /**
@@ -27,6 +28,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+            'email' => 'required|string|email|max:191|unique:users',
+            'password' => 'required|string|min:3'
+        ]);
+
         return User::create([
             'name' => $request['name'],
             'email' => $request['email'],
