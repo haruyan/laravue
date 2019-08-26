@@ -17,6 +17,16 @@ Vue.component(AlertError.name, AlertError)
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+import swal from 'sweetalert2'
+window.swal = swal;
+const Toast = swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+})
+window.toast = Toast;
+
 import VueProgressBar from 'vue-progressbar';
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
@@ -42,6 +52,7 @@ Vue.filter('myDate', function(date){
     return moment(date).format('MMM Do YY');
 });
   
+window.Fire = new Vue();
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
